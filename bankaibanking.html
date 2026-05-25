@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#facc15" />
+    <!--DYNAMIC_META_TAGS-->
+    <!--SSR_ARTICLE_DATA-->
+    
+    <!-- Preconnect to Google Analytics (deferred but helps when loaded) -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    
+    <!-- Preload Inter fonts to prevent CLS from font swap -->
+    <!-- 400: body text, excerpt; 500: subheadings; 600: author name (semibold); 700: headlines (bold) -->
+    <link rel="preload" href="/assets/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/inter-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/inter-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/inter-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin />
+    
+    <!-- RSS Feed Auto-Discovery -->
+    <link rel="alternate" type="application/rss+xml" title="BUSINESS 2.0 NEWS RSS Feed" href="/rss.xml" />
+    
+    <!-- Sitemap Discovery -->
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://business20channel.tv/sitemap.xml" />
+    <link rel="sitemap" type="application/xml" title="News Sitemap" href="https://business20channel.tv/news-sitemap.xml" />
+    
+    <!-- Favicon - Red Gradient Replit Style -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="/favicon.png" />
+    
+    <!-- Deferred Google Analytics - loads on first user interaction or after 5s post-load -->
+    <!-- This prevents gtag from competing with LCP image loading -->
+    <script>
+      (function() {
+        var loaded = false;
+        var fallbackTimer = null;
+        function loadGtag() {
+          if (loaded) return;
+          loaded = true;
+          if (fallbackTimer) clearTimeout(fallbackTimer);
+          var gtagScript = document.createElement('script');
+          gtagScript.async = true;
+          gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-3HGZGZDLBZ';
+          document.head.appendChild(gtagScript);
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-3HGZGZDLBZ', { send_page_view: true });
+        }
+        // Load on first user interaction (scroll, click, keydown, touch)
+        // once:true auto-removes after first call, loaded flag prevents duplicate work
+        ['scroll','click','keydown','touchstart'].forEach(function(e){
+          document.addEventListener(e, loadGtag, {once:true,passive:true,capture:true});
+        });
+        // Fallback: load 5 seconds after page load if no interaction
+        window.addEventListener('load', function() {
+          fallbackTimer = setTimeout(loadGtag, 5000);
+        });
+      })();
+    </script>
+    
+    <!-- Deferred Google News Newsletter - loads after user interaction -->
+    <script>
+      window.initSwgBasic = function() {
+        if (window.swgBasicLoaded) return;
+        window.swgBasicLoaded = true;
+        var swgScript = document.createElement('script');
+        swgScript.async = true;
+        swgScript.src = 'https://news.google.com/swg/js/v1/swg-basic.js';
+        document.head.appendChild(swgScript);
+        (self.SWG_BASIC = self.SWG_BASIC || []).push(function(basicSubscriptions) {
+          basicSubscriptions.init({
+            type: "NewsArticle",
+            isPartOfType: ["Product"],
+            isPartOfProductId: "CAow5szEDA:openaccess",
+            clientOptions: { theme: "light", lang: "en" },
+          });
+        });
+      };
+      document.addEventListener('scroll', window.initSwgBasic, { once: true, passive: true });
+      document.addEventListener('click', window.initSwgBasic, { once: true });
+    </script>
+    <script type="module" crossorigin src="/assets/index-DiaBO44K.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DcjYe3ZB.css">
+  </head>
+  <body>
+    <!--SSR_ARTICLE_BODY-->
+    <div id="root"></div>
+    <!--SSR_HYDRATION_SCRIPT-->
+  </body>
+</html>
